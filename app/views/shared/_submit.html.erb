@@ -1,0 +1,7 @@
+<div data-controller="form-submission" class="mb-4 mt-12 flex justify-end font-semibold">
+  <%= locals[:form].submit locals[:cta], 
+    id: "submit-button",
+    class: "submit-enabled w-full sm:w-32 h-10 px-4 rounded font-semibold text-white",
+    data: { "form-submission-target": "submit", action: "click->form-submission#submit"}
+  %>
+</div>
