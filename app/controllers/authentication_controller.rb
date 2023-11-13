@@ -14,7 +14,6 @@ class AuthenticationController < ApplicationController
   end
 
   def login
-    sleep 2
     if current_user&.authenticate(login_params.fetch(:password))
       auth_token = current_user.generate_auth_token
       cookies['Authorization'] = auth_token.to_cookie!

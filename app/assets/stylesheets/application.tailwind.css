@@ -17,6 +17,7 @@
     @apply bg-blue-500;
     @apply hover:bg-blue-400;
     @apply hover:cursor-pointer;
+    @apply transition-colors;
   }
 
   .submit-disabled {
