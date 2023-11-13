@@ -21,7 +21,7 @@
         placeholder: "Password",
         class: "text-slate-700 required ring-0 border-slate-300 w-full h-10 px-4 rounded transition focus:ring-blue-300" 
       %>
+    </div>
   </div>
-  </div>
-  <%= render 'shared/submit', locals: { form: form, cta: "Sign In"} %>
+  <%= render SubmitButtonComponent.new(form: form, text: "Sign In", clicked_text: "Signing In...") %>
 <% end %>
