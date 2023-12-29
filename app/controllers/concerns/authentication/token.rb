@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Authentication
-  # represents a user's JWT, used for authenticating requests where required
+  # represents a user's JWT, used for authenticating/authorizing requests where required
   class Token
     include ActiveModel::Model
 

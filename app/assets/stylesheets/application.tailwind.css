@@ -13,14 +13,14 @@
 */
 
 @layer components {
-  .submit-enabled {
+  .button-enabled {
     @apply bg-blue-500;
     @apply hover:bg-blue-400;
     @apply hover:cursor-pointer;
     @apply transition-colors;
   }
 
-  .submit-disabled {
+  .button-disabled {
     @apply bg-blue-400;
   }
 }

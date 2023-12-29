@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :cars
+  resources :vehicles
 
   resources :authentication, only: [] do
     collection do
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'cars#index'
+  root 'vehicles#index'
 end

@@ -51,6 +51,16 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
   gem 'debug', platforms: %i[mri windows]
+
+  gem 'factory_bot_rails'
+  gem 'faker'
+
+  gem 'rspec-rails'
+
+  gem 'rubocop', '~> 1.59', require: false
+  gem 'rubocop-performance', '~> 1.19'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
@@ -73,7 +83,3 @@ gem 'jwt'
 gem 'kaminari'
 gem 'lograge'
 gem 'view_component', '~> 3.7'
-
-gem 'rubocop', '~> 1.57'
-gem 'rubocop-performance', '~> 1.19'
-gem 'rubocop-rails', '~> 2.22'

@@ -28,6 +28,8 @@ module Authentication
     return unless auth_token.present? && auth_token.valid?
 
     @current_user = User.find(auth_token.uid)
+  rescue ActiveRecord::RecordNotFound
+    handle_authorization_error
   end
 
   # @return [Token,nil] - decoded, deserialized JWT
@@ -54,7 +56,14 @@ module Authentication
         render json: { error: 'Not authorized. Authorization header is missing or invalid.' }, status: :unauthorized
       end
 
-      format.html { redirect_to login_authentication_index_path }
+      format.html do
+        reset_auth_token!
+        redirect_to login_authentication_index_path
+      end
     end
+  end
+
+  def reset_auth_token!
+    cookies['Authorization'] = nil
   end
 end

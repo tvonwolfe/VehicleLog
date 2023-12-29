@@ -32,7 +32,10 @@ class AuthenticationController < ApplicationController
 
   def logout
     cookies.delete('Authorization')
-    redirect_to login_authentication_index_path
+    respond_to do |format|
+      format.html { redirect_to login_authentication_index_path }
+      format.json { head :no_content }
+    end
   end
 
   private

@@ -7,7 +7,7 @@ export default class extends Controller {
   clicked() {
     const element = this.submitTarget;
     element.value = this.clickedTextValue;
-    element.classList.add('submit-disabled');
-    element.classList.remove('submit-enabled');
+    element.classList.add('button-disabled');
+    element.classList.remove('button-enabled');
   }
 }
