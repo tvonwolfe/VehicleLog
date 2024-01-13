@@ -8,7 +8,7 @@ class LogEntryListComponent < ViewComponent::Base
     @log_entries = vehicle.log_entries
   end
 
-  def total_costs
-    Money.from_amount(log_entries.sum(:cost)).format
+  def total_cost
+    log_entries.sum(&:cost)
   end
 end

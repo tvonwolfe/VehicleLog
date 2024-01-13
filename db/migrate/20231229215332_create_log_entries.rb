@@ -5,7 +5,7 @@ class CreateLogEntries < ActiveRecord::Migration[7.1]
     create_table :log_entries do |t|
       t.string :title
       t.text :description
-      t.decimal :cost
+      t.monetize :cost
       t.integer :recorded_mileage
       t.date :performed_on
       t.references :vehicle, null: false, foreign_key: true

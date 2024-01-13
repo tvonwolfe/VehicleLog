@@ -82,6 +82,5 @@ gem 'hiredis'
 gem 'jwt'
 gem 'kaminari'
 gem 'lograge'
+gem 'money-rails', '~> 1.15'
 gem 'view_component', '~> 3.7'
-
-gem "money", "~> 6.16"

@@ -17,7 +17,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_215332) do
   create_table "log_entries", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.decimal "cost"
+    t.integer "cost_cents", default: 0, null: false
+    t.string "cost_currency", default: "USD", null: false
     t.integer "recorded_mileage"
     t.date "performed_on"
     t.bigint "vehicle_id", null: false
