@@ -1,14 +1,10 @@
 <div id="<%= dom_id vehicle %>">
   <span class="flex flex-row justify-between mb-4">
-    <span class="h-full font-semibold text-slate-600 hover:underline">
-      <%= link_to "← All vehicles", vehicles_path %>
-    </span>
+    <%= render BackLinkComponent.new("All vehicles", vehicles_path) %>
     <span class="flex flex-col">
       <h2 class="text-slate-700 self-center font-bold text-3xl"><%= vehicle.friendly_title %></h2>
       <p class="text-slate-400 text-right"><%= vehicle.vin %></p>
     </span>
   </span>
-  <div id="<%= dom_id vehicle%>_log">
-    <h3 class="text-slate-700 font-semibold text-3xl">Log</h3>
-  </div>
+  <%= render LogEntryListComponent.new(vehicle) %>
 </div>

@@ -9,6 +9,16 @@
 #
 # See https://docs.rubocop.org/rubocop/configuration
 
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-factory_bot
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2.2
+  SuggestExtensions: true
 Lint/MissingSuper:
   Exclude:
     - 'app/components/**/*.rb'

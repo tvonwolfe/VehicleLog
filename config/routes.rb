@@ -1,5 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :vehicles
+  resources :log_entries, only: %i[show edit update destroy]
+
+  resources :vehicles do
+    resources :log_entries, only: :index
+  end
 
   resources :authentication, only: [] do
     collection do

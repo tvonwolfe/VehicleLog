@@ -83,3 +83,5 @@ gem 'jwt'
 gem 'kaminari'
 gem 'lograge'
 gem 'view_component', '~> 3.7'
+
+gem "money", "~> 6.16"

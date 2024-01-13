@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 class Vehicle < ApplicationRecord
   STARTING_YEAR = 1925
 
-  validates :vin, presence: true, uniqueness: true
-  validates :make, presence: true
-  validates :model, presence: true
+  validates :vin, uniqueness: true
+  validates :vin, :make, :model, :year, presence: true
   validates :year, numericality: { only_integer: true }
 
   validate :model_year_is_valid
+
+  has_many :log_entries, dependent: :destroy
 
   def friendly_title
     "#{year} #{make} #{model}"
