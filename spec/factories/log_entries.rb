@@ -2,11 +2,12 @@
 
 FactoryBot.define do
   factory :log_entry do
-    title { 'MyString' }
-    description { 'MyText' }
-    cost { 9.99 }
-    performed_on { '2023-12-29' }
-    vehicle { nil }
+    vehicle
+    title { Faker::Lorem.words(number: Array(1..4).sample).join }
+    description { Faker::Lorem.paragraphs(number: 1) }
+    cost { Faker::Commerce.price }
+    recorded_mileage { Faker::Number.within(range: 1..1_000_000) }
+    performed_on { Date.current }
     has_paper_record { false }
   end
 end

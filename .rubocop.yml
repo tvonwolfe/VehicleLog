@@ -22,5 +22,14 @@ AllCops:
 Lint/MissingSuper:
   Exclude:
     - 'app/components/**/*.rb'
+Metrics/AbcSize:
+  Max: 20
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+Metrics/MethodLength:
+  Max: 15
 Style/Documentation:
   Enabled: false
+RSpec/MultipleExpectations:
+  Max: 5

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
@@ -77,11 +79,11 @@ Rails.application.configure do
   network_hostnames = [
     `hostname`,
     `hostname -I`
-  ].map do |hostname|
+  ].filter_map do |hostname|
     hostname.strip.split.first
   rescue Errno::ENOENT
     nil
-  end.compact
+  end
 
   config.hosts = [
     'localhost',

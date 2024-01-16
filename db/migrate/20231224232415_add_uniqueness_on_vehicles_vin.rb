@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUniquenessOnVehiclesVin < ActiveRecord::Migration[7.1]
   def change
     change_column_null :vehicles, :vin, false

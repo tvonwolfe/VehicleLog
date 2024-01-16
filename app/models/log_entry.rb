@@ -8,7 +8,7 @@ class LogEntry < ApplicationRecord
   validates :cost_cents, numericality: { greater_than_or_equal_to: 0 }
   validates :recorded_mileage, numericality: { greater_than_or_equal_to: 0 }
 
-  monetize :cost_cents
+  monetize :cost_cents, allow_nil: false
 
   def formatted_mileage
     recorded_mileage.to_fs(:delimited)

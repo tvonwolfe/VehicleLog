@@ -14,19 +14,14 @@ class AuthenticationController < ApplicationController
   end
 
   def login
-    if current_user&.authenticate(login_params.fetch(:password))
-      auth_token = current_user.generate_auth_token
-      cookies['Authorization'] = auth_token.to_cookie!
+    authenticate_with_password!
 
-      respond_to do |format|
-        format.html { redirect_to :root }
-        format.json { render json: { token: cookies['Authorization'] }, status: :ok }
-      end
-    else
-      respond_to do |format|
-        format.html { render LoginComponent.new(error: 'Invalid username or password.'), status: :bad_request }
-        format.json { render json: { error: 'Invalid username or password.' }, status: :bad_request }
-      end
+    auth_token = current_user.generate_auth_token
+    cookies['Authorization'] = auth_token.to_cookie!
+
+    respond_to do |format|
+      format.html { redirect_to :root }
+      format.json { render json: { token: cookies['Authorization'] }, status: :ok }
     end
   end
 
@@ -46,5 +41,14 @@ class AuthenticationController < ApplicationController
 
   def login_params
     params.permit %i[email password]
+  end
+
+  def authenticate_with_password!
+    return if current_user&.authenticate(login_params.fetch(:password))
+
+    respond_to do |format|
+      format.html { render LoginComponent.new(error: 'Invalid username or password.'), status: :bad_request }
+      format.json { render json: { error: 'Invalid username or password.' }, status: :bad_request }
+    end
   end
 end

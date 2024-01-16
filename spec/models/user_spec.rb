@@ -1,4 +1,6 @@
-RSpec.describe User, type: :model do
+# frozen_string_literal: true
+
+RSpec.describe User do
   let(:user) { build(:user) }
 
   describe 'validations' do

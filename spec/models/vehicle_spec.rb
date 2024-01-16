@@ -1,4 +1,6 @@
-RSpec.describe Vehicle, type: :model do
+# frozen_string_literal: true
+
+RSpec.describe Vehicle do
   let(:vehicle) { build(:vehicle) }
 
   describe 'validations' do

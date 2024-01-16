@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Authentication', type: :request do
+RSpec.describe 'Authentication' do
   let(:password) { Faker::Alphanumeric.alphanumeric(number: 12) }
   let(:user) { create(:user, password:) }
   let(:params) { { email: user.email, password: } }

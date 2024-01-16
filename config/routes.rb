@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :log_entries, only: %i[show edit update destroy]
 
   resources :vehicles do
-    resources :log_entries, only: :index
+    resources :log_entries, only: %i[index create new]
   end
 
   resources :authentication, only: [] do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 shared_examples 'a successful request' do
   it 'returns success' do
     expect(response).to be_successful

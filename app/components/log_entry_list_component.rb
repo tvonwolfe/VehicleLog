@@ -9,6 +9,6 @@ class LogEntryListComponent < ViewComponent::Base
   end
 
   def total_cost
-    log_entries.sum(&:cost)
+    log_entries.sum(&:cost).to_money
   end
 end
