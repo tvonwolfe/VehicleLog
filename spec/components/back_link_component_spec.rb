@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe BackLinkComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'rendered component' do
+    it 'renders the link as expected' do
+      render_inline(described_class.new('back', '/'))
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+      expect(page).to have_link '← back', href: '/'
+    end
+  end
 end
