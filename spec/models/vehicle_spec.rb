@@ -34,7 +34,7 @@ RSpec.describe Vehicle do
     end
 
     it 'is invalid with a year that is too far in the past' do
-      vehicle.year = Vehicle::STARTING_YEAR - 1
+      vehicle.year = described_class::STARTING_YEAR - 1
       expect(vehicle).not_to be_valid
     end
 
@@ -43,6 +43,21 @@ RSpec.describe Vehicle do
       new_vehicle = build(:vehicle, vin: vehicle.vin)
 
       expect(new_vehicle).not_to be_valid
+    end
+  end
+
+  describe 'associations' do
+    let!(:vehicle) do
+      v = create(:vehicle)
+      create_list(:log_entry, 3, vehicle: v)
+
+      v
+    end
+
+    it 'destroys associated log_entry records when the vehicle record is destroyed' do
+      expect do
+        vehicle.destroy!
+      end.to change(described_class, :count).by(-1).and change(LogEntry, :count).by(-3)
     end
   end
 end

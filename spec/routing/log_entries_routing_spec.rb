@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe LogEntriesController do
   describe 'routing' do
     it 'routes to #index' do
-      expect(get: '/log_entries').to route_to('log_entries#index')
+      expect(get: 'vehicles/1/log_entries').to route_to('log_entries#index', vehicle_id: '1')
     end
 
     it 'routes to #new' do
-      expect(get: '/log_entries/new').to route_to('log_entries#new')
+      expect(get: 'vehicles/1/log_entries/new').to route_to('log_entries#new', vehicle_id: '1')
     end
 
     it 'routes to #show' do
@@ -21,7 +19,7 @@ RSpec.describe LogEntriesController do
     end
 
     it 'routes to #create' do
-      expect(post: '/log_entries').to route_to('log_entries#create')
+      expect(post: 'vehicles/1/log_entries').to route_to('log_entries#create', vehicle_id: '1')
     end
 
     it 'routes to #update via PUT' do

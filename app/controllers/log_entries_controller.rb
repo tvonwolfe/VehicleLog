@@ -53,7 +53,7 @@ class LogEntriesController < ApplicationController
     @log_entry.destroy!
 
     respond_to do |format|
-      format.html { redirect_to log_entries_url, notice: I18n.t('log_entry.destroy.success') }
+      format.html { redirect_to vehicle_path(@log_entry.vehicle), notice: I18n.t('log_entry.destroy.success') }
       format.json { head :no_content }
     end
   end
@@ -71,8 +71,15 @@ class LogEntriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def log_entry_params
-    params.require(:log_entry).permit(:title, :description, :has_paper_record, :cost, :performed_on, :recorded_mileage)
+    params
+      .require(:log_entry)
+      .permit(:title,
+              :description,
+              :cost,
+              :recorded_mileage,
+              :performed_on,
+              :has_paper_record)
   end
 
-  attr_reader :vehicle
+  attr_accessor :vehicle
 end
