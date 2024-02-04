@@ -12,8 +12,7 @@ RSpec.describe 'Vehicles' do
       get vehicles_path, headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :index
     it_behaves_like 'an authenticated route'
   end
@@ -25,8 +24,7 @@ RSpec.describe 'Vehicles' do
       get vehicle_path(vehicle), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :show
     it_behaves_like 'an authenticated route'
   end
@@ -36,8 +34,7 @@ RSpec.describe 'Vehicles' do
       get new_vehicle_path, headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :new
     it_behaves_like 'an authenticated route'
   end
@@ -49,8 +46,7 @@ RSpec.describe 'Vehicles' do
       get edit_vehicle_path(vehicle), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :edit
     it_behaves_like 'an authenticated route'
   end
@@ -62,7 +58,7 @@ RSpec.describe 'Vehicles' do
       post vehicles_path, headers:, params:
     end
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an authenticated route'
 
     it "redirects to the newly-created vehicle's page" do
@@ -84,14 +80,14 @@ RSpec.describe 'Vehicles' do
     context 'when required params are missing' do
       let(:params) { { vehicle: attributes_for(:vehicle).except(:make) } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :new
     end
 
     context 'when params are invalid' do
       let(:params) { { vehicle: attributes_for(:vehicle).merge(year: 'nineteen seventy-five') } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :new
     end
   end
@@ -114,7 +110,7 @@ RSpec.describe 'Vehicles' do
     context 'when params are invalid' do
       let(:params) { { vehicle: { year: 'nineteen seventy-five' } } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :edit
     end
   end
@@ -126,7 +122,7 @@ RSpec.describe 'Vehicles' do
       delete vehicle_path(vehicle), headers:
     end
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an authenticated route'
     it_behaves_like 'an internal redirect', :vehicles
 

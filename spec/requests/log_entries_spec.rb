@@ -20,8 +20,7 @@ RSpec.describe 'LogEntries' do
       get vehicle_log_entries_path(vehicle), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :index
     it_behaves_like 'an authenticated route'
   end
@@ -33,8 +32,7 @@ RSpec.describe 'LogEntries' do
       get log_entry_path(log_entry), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :show
     it_behaves_like 'an authenticated route'
   end
@@ -46,8 +44,7 @@ RSpec.describe 'LogEntries' do
       get new_vehicle_log_entry_path(vehicle), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :new
     it_behaves_like 'an authenticated route'
   end
@@ -60,8 +57,7 @@ RSpec.describe 'LogEntries' do
       get edit_log_entry_path(log_entry), headers:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
     it_behaves_like 'an expected view template', :edit
     it_behaves_like 'an authenticated route'
   end
@@ -74,7 +70,7 @@ RSpec.describe 'LogEntries' do
       post vehicle_log_entries_path(vehicle), headers:, params:
     end
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an authenticated route'
 
     it 'creates a new log entry' do
@@ -87,14 +83,14 @@ RSpec.describe 'LogEntries' do
     context 'when required params are missing' do
       let(:params) { { log_entry: attributes_for(:log_entry).except(:performed_on) } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :new
     end
 
     context 'when params are invalid' do
       let(:params) { { log_entry: attributes_for(:log_entry).merge(recorded_mileage: true) } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :new
     end
   end
@@ -115,13 +111,13 @@ RSpec.describe 'LogEntries' do
       patch log_entry_path(log_entry), headers:, params:
     end
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an authenticated route'
 
     context 'when params are invalid' do
       let(:params) { { log_entry: { recorded_mileage: true } } }
 
-      it_behaves_like 'an unprocessable entity (422) response'
+      it_behaves_like 'an HTTP 422 response'
       it_behaves_like 'an expected view template', :edit
     end
   end
@@ -133,7 +129,7 @@ RSpec.describe 'LogEntries' do
       delete log_entry_path(log_entry), headers:
     end
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an authenticated route'
 
     it "redirects to the deleted log entry's vehicle page" do

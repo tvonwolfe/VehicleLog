@@ -1,36 +1,30 @@
 # frozen_string_literal: true
 
-shared_examples 'a successful request' do
-  it 'returns success' do
-    expect(response).to be_successful
-  end
-end
-
-shared_examples 'an ok (200) response' do
+shared_examples 'an HTTP 200 response' do
   it 'returns ok' do
     expect(response).to have_http_status(:ok)
   end
 end
 
-shared_examples 'a no content (204) response' do
+shared_examples 'an HTTP 204 response' do
   it 'returns no content' do
     expect(response).to have_http_status(:no_content)
   end
 end
 
-shared_examples 'a found (302) response' do
+shared_examples 'an HTTP 302 response' do
   it 'returns found' do
     expect(response).to have_http_status(:found)
   end
 end
 
-shared_examples 'an unauthorized (401) response' do
+shared_examples 'an HTTP 401 response' do
   it 'returns unauthorized' do
     expect(response).to have_http_status(:unauthorized)
   end
 end
 
-shared_examples 'an unprocessable entity (422) response' do
+shared_examples 'an HTTP 422 response' do
   it 'returns unprocessable_entity' do
     expect(response).to have_http_status(:unprocessable_entity)
   end
@@ -52,7 +46,7 @@ shared_examples 'an authenticated route' do
   context 'when user is not authenticated' do
     let(:headers) { {} }
 
-    it_behaves_like 'a found (302) response'
+    it_behaves_like 'an HTTP 302 response'
     it_behaves_like 'an internal redirect', :login_authentication_index
   end
 end

@@ -10,8 +10,7 @@ RSpec.describe 'Authentication' do
       post '/authentication/login.json', params:
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'an ok (200) response'
+    it_behaves_like 'an HTTP 200 response'
 
     it 'responds with a valid auth token for the authenticated user' do
       token = Authentication::Token.decode(response.parsed_body['token'])
@@ -38,7 +37,6 @@ RSpec.describe 'Authentication' do
       expect(response.cookies['Authorization']).to be_blank
     end
 
-    it_behaves_like 'a successful request'
-    it_behaves_like 'a no content (204) response'
+    it_behaves_like 'an HTTP 204 response'
   end
 end
