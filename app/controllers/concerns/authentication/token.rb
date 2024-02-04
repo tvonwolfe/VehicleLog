@@ -57,7 +57,7 @@ module Authentication
     def to_cookie!
       {
         expires: exp,
-        domain: iss,
+        domain: :all,
         httponly: true,
         secure: Rails.env.production?,
         value: encode!
