@@ -7,10 +7,20 @@ class VehiclesController < ApplicationController
   # GET /vehicles or /vehicles.json
   def index
     @vehicles = Vehicle.all
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   # GET /vehicles/1 or /vehicles/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
+  end
 
   # GET /vehicles/new
   def new

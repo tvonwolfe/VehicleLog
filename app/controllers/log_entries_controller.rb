@@ -7,6 +7,11 @@ class LogEntriesController < ApplicationController
 
   def index
     @log_entries = vehicle.log_entries
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   # GET /log_entries/1 or /log_entries/1.json
@@ -53,6 +58,7 @@ class LogEntriesController < ApplicationController
     @log_entry.destroy!
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to vehicle_path(@log_entry.vehicle), notice: I18n.t('log_entry.destroy.success') }
       format.json { head :no_content }
     end

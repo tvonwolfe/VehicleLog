@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe 'log_entries/show' do
+  let(:log_entry) { create(:log_entry) }
+
   before do
-    assign(:log_entry, LogEntry.create!)
+    assign(:log_entry, log_entry)
   end
 
   it 'renders attributes in <p>' do

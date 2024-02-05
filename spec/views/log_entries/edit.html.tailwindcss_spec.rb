@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe 'log_entries/edit' do
   let(:log_entry) do
-    LogEntry.create!
+    create(:log_entry)
   end
 
   before do

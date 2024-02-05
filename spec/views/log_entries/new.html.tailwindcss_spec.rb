@@ -2,11 +2,11 @@
 
 RSpec.describe 'log_entries/new' do
   let(:vehicle) { create(:vehicle) }
-  let(:log_entry) { LogEntry.new }
+  let(:log_entry) { build(:log_entry, vehicle:) }
 
   before do
-    assign(:log_entry, LogEntry.new)
-    assign(:vehicle, create(:vehicle))
+    assign(:log_entry, log_entry)
+    assign(:vehicle, vehicle)
   end
 
   it 'renders new log_entry form' do
